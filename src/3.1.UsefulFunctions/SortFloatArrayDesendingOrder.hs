@@ -19,16 +19,3 @@ orderDes :: [Float] -> [Float]
 orderDes xs
     |   isDecending xs = xs
     |   otherwise = orderDes(orderDesRow xs)
-
--- TEST
-main :: IO ()
-main = do
-    let floats = [52.4, 7, 6.6, 9, 1.1, 0.1, 0.333]
-    
-    
-    --  Unordered
-    print floats
-
-
-    --  Ordered
-    print (orderDes floats)
