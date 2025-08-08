@@ -1,6 +1,6 @@
 -- Checks if the Array it's in a decending order.
 isDecending :: [Float] -> Bool
-isDecending [] = False
+isDecending [] = True
 isDecending [x] = True
 isDecending (x:y:xs) 
     |   x < y       = False
