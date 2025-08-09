@@ -1,9 +1,9 @@
 -- We need to narrow x between -Pi and Pi
 reduceToPi :: Float -> Float
 reduceToPi x
-    |   x > pi  = reduceToPi (x - 2*pi)
-    |   x < -pi = reduceToPi (x + 2*pi)
-    |   otherwise = x
+    |   x > pi      = reduceToPi (x - 2*pi)
+    |   x < -pi     = reduceToPi (x + 2*pi)
+    |   otherwise   = x
 
 
 exponential :: Float -> Int -> Float
@@ -33,7 +33,7 @@ cosine x y = cosineSum (reduceToPi x) y 0
 
 
 
--- TESTING
+--  TESTING
 compareCosineFunction :: Float -> Int -> IO()
 compareCosineFunction x y = do
     putStrLn ("     Full precision: " ++ show(cos x))
