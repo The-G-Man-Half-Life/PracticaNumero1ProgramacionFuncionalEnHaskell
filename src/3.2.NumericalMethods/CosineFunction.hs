@@ -17,7 +17,6 @@ factorial 0 = 1
 factorial x = fromIntegral x * factorial (x - 1)
 
 
-
 -- Internal Function that cosine function calls.
 cosineSum :: Float -> Int -> Int -> Float
 cosineSum x y n
@@ -37,7 +36,6 @@ cosine x y = cosineSum (reduceToPi x) y 0
 -- TESTING
 compareCosineFunction :: Float -> Int -> IO()
 compareCosineFunction x y = do
-
     putStrLn ("     Full precision: " ++ show(cos x))
     putStrLn ("     Sumatory with " ++ show y ++ " precision: " ++ show(cosine x y) ++ "\n")
 
