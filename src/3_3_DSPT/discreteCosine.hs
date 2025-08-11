@@ -1,6 +1,3 @@
-pi :: Float
-pi = 3.1416
-
 aproxSqrt :: Float -> Int -> Float
 aproxSqrt value _ | value == 0 = 0
 aproxSqrt value iterations = aproximate value iterations (value/2)
@@ -8,7 +5,7 @@ aproxSqrt value iterations = aproximate value iterations (value/2)
         aproximate _ 0 aproximation = aproximation
         aproximate value iterations aproximation =
             let newAproximation = 0.5 * (aproximation + (value / aproximation))
-            in aproximate value (iteration - 1) newAproximation
+            in aproximate value (iterations - 1) newAproximation
 
 normalizationFactor :: Int -> Int -> Int -> Float
 normalizationFactor indexK totalAmountOfData iterations =
