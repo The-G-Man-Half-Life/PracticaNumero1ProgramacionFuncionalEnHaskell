@@ -1,3 +1,9 @@
+absoluteValue :: Double -> Double
+absoluteValue x
+    |   x >= 0      = x
+    |   otherwise   = -x
+
+
 exponential :: Double -> Int -> Double
 exponential _ 0 = 1
 exponential x 1 = x
@@ -13,8 +19,9 @@ naturalLogSum x y n
 
 -- Main function user calls with N degree of precision
 naturalLog :: Double -> Int -> Double
-naturalLog x y = naturalLogSum x y 0
-
+naturalLog x n
+    |   absoluteValue x > 1 = naturalLogSum x n 0
+    
 
 --  TESTING
 compareLogarithmFunction :: Double -> Int -> IO()
@@ -25,6 +32,6 @@ compareLogarithmFunction x y = do
 
 main :: IO ()
 main = do
-    compareLogarithmFunction 1 10
+    compareLogarithmFunction (-1) 10
     compareLogarithmFunction 2 10
     compareLogarithmFunction 10 15

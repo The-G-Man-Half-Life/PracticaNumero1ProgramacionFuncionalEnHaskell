@@ -21,7 +21,7 @@ obtainFactorial 1 = 1
 an integer and multiplies
 it for the values before it 
 in a descending order-}
-obtainFactorial n = n * obtainFactorial(n-1)
+obtainFactorial n = n * obtainFactorial (n-1)
 
 {-inputs:
 a float
@@ -74,4 +74,4 @@ x as requested implementing the obtainExponential
 and the obtainFactorial functions in it-}
 expAproxAux valueOfX valueOfAprox valueOfBegining
     | valueOfBegining == valueOfAprox    = 0
-    | otherwise = (obtainExponential valueOfX valueOfBegining) / fromIntegral (obtainFactorial valueOfBegining) + expAproxAux valueOfX valueOfAprox (valueOfBegining + 1)
+    | otherwise = obtainExponential valueOfX valueOfBegining / fromIntegral (obtainFactorial valueOfBegining) + expAproxAux valueOfX valueOfAprox (valueOfBegining + 1)
