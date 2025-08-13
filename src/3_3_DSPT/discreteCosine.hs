@@ -1,15 +1,24 @@
+--value of pi
 pi :: Float
 pi = 3.1416
 
+
+{-inputs: the value to get the square rot of a number
+and an integer representing the amount of times that the 
+sqrt should be refined-}
+{-output: an approximate value of the sqrt of a number as a float-}
+--a function that allows to approximate the sqrt of any float number
 aproxSqrt :: Float -> Int -> Float
-aproxSqrt value _ | value == 0 = 0
+aproxSqrt value _ | value == 0 = 0 -- if is 0 the value returns 0 inmediately
 aproxSqrt value iterations = aproximate value iterations (value/2)
     where
-        aproximate _ 0 aproximation = aproximation
+        aproximate _ 0 aproximation = aproximation 
         aproximate value iterations aproximation =
             let newAproximation = 0.5 * (aproximation + (value / aproximation))
             in aproximate value (iteration - 1) newAproximation
 
+
+--calcula el factor de normalizacion a(k)
 normalizationFactor :: Int -> Int -> Int -> Float
 normalizationFactor indexK totalAmountOfData iterations =
   let nAsFloat = fromIntegral totalAmountOfData
