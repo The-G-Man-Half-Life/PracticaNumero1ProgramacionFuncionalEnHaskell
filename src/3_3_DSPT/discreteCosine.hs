@@ -15,7 +15,7 @@ aproxSqrt value iterations = aproximate value iterations (value/2)
         aproximate _ 0 aproximation = aproximation 
         aproximate value iterations aproximation =
             let newAproximation = 0.5 * (aproximation + (value / aproximation))
-            in aproximate value (iteration - 1) newAproximation
+            in aproximate value (iterations - 1) newAproximation
 
 
 --calcula el factor de normalizacion a(k)
@@ -30,7 +30,7 @@ cosenTerm sample indexN indexK totalAmountOfData =
   let nF = fromIntegral indexN
       kF = fromIntegral indexK
       totalF = fromIntegral totalAmountOfData
-      argument = (nF + 0.5) * pi * kF / totalF
+      argument = (nF + 0.5) * Main.pi * kF / totalF
   in sample * cos argument
 
 sumOfTerms :: [Float] -> Int -> Int -> Int -> Float
