@@ -1,61 +1,71 @@
---value of pi
-pi :: Float
-pi = 3.1416
+
+obtainListLength :: [Double] -> Int
+obtainListLength [] = 0
+obtainListLength (_:xs) = 1 + obtainListLength xs
 
 
-{-inputs: the value to get the square rot of a number
-and an integer representing the amount of times that the 
-sqrt should be refined-}
-{-output: an approximate value of the sqrt of a number as a float-}
---a function that allows to approximate the sqrt of any float number
-aproxSqrt :: Float -> Int -> Float
-aproxSqrt value _ | value == 0 = 0 -- if is 0 the value returns 0 inmediately
-aproxSqrt value iterations = aproximate value iterations (value/2)
-    where
-        aproximate _ 0 aproximation = aproximation 
-        aproximate value iterations aproximation =
-            let newAproximation = 0.5 * (aproximation + (value / aproximation))
-            in aproximate value (iterations - 1) newAproximation
+myAbs :: Double -> Double
+myAbs x = if x < 0 then -x else x
 
 
---calcula el factor de normalizacion a(k)
-normalizationFactor :: Int -> Int -> Int -> Float
-normalizationFactor indexK totalAmountOfData iterations =
-  let nAsFloat = fromIntegral totalAmountOfData
-      base = if indexK == 0 then 1.0 / nAsFloat else 2.0 / nAsFloat
-  in aproxSqrt base iterations
+obtainSqrt :: Double -> Double
+obtainSqrt num
+  | num == 0 = 0
+  | num < 0  = error "obtainSqrt: entrada negativa"
+  | otherwise = useNewtonMethod num (num / 2)
+  where
+    epsilonVal = 1.0e-12
+    useNewtonMethod target y =
+      let y2 = (y + target / y) / 2
+      in if myAbs (y2 - y) < epsilonVal then y2
+         else useNewtonMethod target y2
 
-cosenTerm :: Float -> Int -> Int -> Int -> Float
-cosenTerm sample indexN indexK totalAmountOfData =
-  let nF = fromIntegral indexN
-      kF = fromIntegral indexK
-      totalF = fromIntegral totalAmountOfData
-      argument = (nF + 0.5) * Main.pi * kF / totalF
-  in sample * cos argument
 
-sumOfTerms :: [Float] -> Int -> Int -> Int -> Float
-sumOfTerms [] _ _ _ = 0
-sumOfTerms (sample:leftOver) indexN indexK totalAmountOfData =
-  cosenTerm sample indexN indexK totalAmountOfData
-  + sumOfTerms leftOver (indexN + 1) indexK totalAmountOfData
+accessToAnElementInAList :: [Double] -> Int -> Double
+accessToAnElementInAList [] _ = error "accessToAnElementInAList: índice fuera de rango"
+accessToAnElementInAList (x:_) 0 = x
+accessToAnElementInAList (_:xs) i
+  | i < 0     = error "accessToAnElementInAList: índice negativo"
+  | otherwise = accessToAnElementInAList xs (i-1)
 
-coeficientDCT :: [Float] -> Int -> Int -> Int -> Float
-coeficientDCT listasamples indexK totalAmountOfData iterations =
-  let suma = sumOfTerms listasamples 0 indexK totalAmountOfData
-      factor = normalizationFactor indexK totalAmountOfData iterations
-  in factor * suma
 
-calculateDCTAux :: [Float] -> Int -> Int -> Int -> [Float]
-calculateDCTAux _ indexK totalAmountOfData _ | indexK == totalAmountOfData = []
-calculateDCTAux listasamples indexK totalAmountOfData iterations =
-  coeficientDCT listasamples indexK totalAmountOfData iterations
-  : calculateDCTAux listasamples (indexK + 1) totalAmountOfData iterations
+factorA :: Int -> Int -> Double
+factorA indexCoefficient signalLength
+  | indexCoefficient == 0 = obtainSqrt (1 / fromIntegral signalLength)
+  | otherwise             = obtainSqrt (2 / fromIntegral signalLength)
 
-miLength :: [a] -> Int
-miLength [] = 0
-miLength (_:leftOver) = 1 + miLength leftOver
 
-calcularDCT :: [Float] -> Int -> [Float]
-calcularDCT listasamples iterationsRaiz =
-  let totalAmountOfData = miLength listasamples
-  in calculateDCTAux listasamples 0 totalAmountOfData iterationsRaiz
+sumOfCosProduct :: Int -> [Double] -> Double -> Int -> Double -> Double
+sumOfCosProduct _ [] _ _ accumulation = accumulation
+sumOfCosProduct indexCoefficient (x:xs) lengthAsDouble recursionIdx accumulation = 
+  let indexCoefficientD = fromIntegral indexCoefficient
+      recursionIdxD = fromIntegral recursionIdx
+      argument = ((recursionIdxD + 0.5) * pi * indexCoefficientD) / lengthAsDouble
+      term = x * cos argument
+      accumulationD = accumulation + term
+  in sumOfCosProduct indexCoefficient xs lengthAsDouble (recursionIdx + 1) accumulationD
+
+
+obtainCoefficientK :: Int -> [Double] -> Double
+obtainCoefficientK k xs =
+  let lenInt = obtainListLength xs
+      lenIntD = fromIntegral lenInt :: Double
+      factorAVal = factorA k lenInt
+      sumOfCosineProductVal = sumOfCosProduct k xs lenIntD 0 0.0
+  in factorAVal * sumOfCosineProductVal
+
+
+obtainDCT :: [Double] -> [Double]
+obtainDCT [] = []
+obtainDCT xs =
+  let lenInt = obtainListLength xs
+  in dctAux 0 lenInt xs
+
+
+dctAux :: Int -> Int -> [Double] -> [Double]
+dctAux factorK lenInt xs
+  | factorK >= lenInt = []
+  | otherwise =
+      let coefficient = obtainCoefficientK factorK xs
+      in coefficient : dctAux (factorK + 1) lenInt xs
+
