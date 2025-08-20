@@ -28,26 +28,20 @@ naturalLog x n
 
 
 --  JUST TESTING
-rounded :: Float -> Float -> Float
-rounded x dy =
-    let factor = 10.0 **  fromIntegral(round (logBase 10 dy))
-    in fromIntegral (round (x * factor)) / factor
-
 compareFunction :: Float -> Int -> IO()
 compareFunction x y = do
-    putStrLn (show x ++ "\t\tFull precision:\t\t\t" ++ show (log (1+x)))
+    putStrLn (show x ++ "\tFull precision:\t\t\t" ++ show (log (1+x)))
     putStrLn ("\t\tSumatory (" ++ show y ++ " precision):\t" ++ show (naturalLog x y) ++ "\n")
 
 testInRange :: Float -> Float -> Float -> Int -> IO()
 testInRange x dy z a = do
     if x <= z then do
-        let rx = rounded x dy
-        compareFunction rx a
-        testInRange (rx + dy) dy z a
+        compareFunction x a
+        testInRange (x + dy) dy z a
     else print "End of Test"
 
 main :: IO ()
 main = do
-    testInRange (-1.02) 0.01 1.02 200
+    testInRange (-1.02) 0.01 1.02 256
 
 --  FINISH TESTING
