@@ -1,23 +1,37 @@
+--  Returns Absolute Value of a Float
 absValue :: Float -> Float
 absValue x
     |   x >= 0      = x
     |   otherwise   = -x
 
 
+-- Returns a Float raised to an Integer power without the use of (^) operator.
 exponential :: Float -> Int -> Float
 exponential _ 0 = 1
 exponential x 1 = x
 exponential x y = x * exponential x (y-1)
 
 
--- Internal function Natural Logarithm function calls
+{-
+Inputs
+    Float   -> Value between -1 & 1 to find the Natural Logarithm
+    Integer -> Degree of precision.
+    Integer -> Number of Iteration, should be started with 1.
+
+Output Float
+    Sum of "(-1)^(n+1) * (x^n / n)" from 1 to the degree of precision specified.
+-}
 naturalLogSum :: Float -> Int -> Int -> Float
 naturalLogSum x y n
     |   n <= y       = (exponential (-1) (n+1) * (exponential x n / fromIntegral n)) + naturalLogSum x y (n+1)
     |   otherwise   = 0
 
 
--- Main function user calls with N degree of precision
+{-
+    Float   ->
+    Integer ->
+    
+-}
 naturalLog :: Float -> Int -> Float
 naturalLog x n
     |   absValue x < 1 = naturalLogSum x n 1
