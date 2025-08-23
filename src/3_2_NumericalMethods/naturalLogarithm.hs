@@ -31,12 +31,12 @@ Notes
 exponential :: Float -> Int -> Float
 exponential _ 0 = 1
 exponential x 1 = x
-exponential x y = x * exponential x (y-1)
+exponential x y = x * exponential x (y - 1)
 
 
 
 {-
-Computes the Natural Logarithm of (1 + x) with the Taylor series.
+Natural Logarithm of (1 + x) with the Taylor series.
 
 Input:
 	Float	-> Value X between -1 & 1 to find the Natural Logarithm with the Taylor series.
@@ -79,10 +79,10 @@ compareFunction x y = do
     putStrLn ("\tSumatory (" ++ show y ++ " precision):\t" ++ show (naturalLog (x / 10) y) ++ "\n")
 
 testing :: Int -> Float -> IO()
-testing a x = do
-    if x <= 10 then do
-        compareFunction x a
-        testing a (x + 1)
+testing value iteration = do
+    if iteration <= 10 then do
+        compareFunction iteration value
+        testing value (iteration + 1)
     else print "End of Test"
 
 main :: IO ()
