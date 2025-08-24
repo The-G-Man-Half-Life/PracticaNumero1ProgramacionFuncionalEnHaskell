@@ -10,8 +10,8 @@ Output:	Float
 -}
 reduceToPi :: Float -> Float
 reduceToPi x
-    |   x > pi      = reduceToPi (x - pi)
-    |   x < -pi     = reduceToPi (x + pi)
+    |   x > pi      = reduceToPi (x - 2*pi)
+    |   x < -pi     = reduceToPi (x + 2*pi)
     |   otherwise   = x
 
 
@@ -96,16 +96,17 @@ cosine x y = cosineSum (reduceToPi x) y 0
 --  TESTING
 compareFunction :: Float -> Int -> IO()
 compareFunction x y = do
-    putStrLn (show x ++ "\n\tIntegrated:\t\t\t" ++ show (cos x))
-    putStrLn ("\tApproximation (" ++ show y ++ " precision):\t" ++ show (cosine x y) ++ "\n")
+    putStrLn (show x ++ "," ++ show (cos x) ++ "," ++ show y ++ "," ++ show (cosine x y))
 
 testing :: Int -> Float -> IO()
 testing value iteration = do
-    if iteration <= 100 then do
+    if iteration <= 10 then do
         compareFunction iteration value
         testing value (iteration + 1)
-    else print "End of Test"
+    else print ""
 
 main :: IO()
 main = do
-    testing 15 (-100)
+    testing 3 (-10)
+    testing 9 (-10)
+    testing 16 (-10)

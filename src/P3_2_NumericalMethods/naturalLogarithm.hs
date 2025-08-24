@@ -75,17 +75,19 @@ naturalLog x n
 --  TESTING TEMPORARY
 compareFunction :: Float -> Int -> IO()
 compareFunction x y = do
-    putStrLn (show (x / 10) ++ "\n\tIntegrated:\t\t\t" ++ show (log (1+(x / 10))))
-    putStrLn ("\tSumatory (" ++ show y ++ " precision):\t" ++ show (naturalLog (x / 10) y) ++ "\n")
+    putStrLn (show (x / 10) ++ "," ++ show (log (1 + (x / 10))) ++ "," ++ show y ++ "," ++ show (naturalLog (x / 10) y))
 
 testing :: Int -> Float -> IO()
 testing value iteration = do
-    if iteration <= 10 then do
+    if iteration <= 9 then do
         compareFunction iteration value
         testing value (iteration + 1)
-    else print "End of Test"
+    else print ""
 
 main :: IO ()
 main = do
-    testing 1024 (-11)
+    testing 3 (-9)
+    testing 10 (-9)
+    testing 50 (-9)
+    testing 200 (-9)
 --  FINISH TESTING
