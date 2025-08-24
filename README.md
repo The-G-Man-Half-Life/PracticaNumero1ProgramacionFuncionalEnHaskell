@@ -15,8 +15,13 @@ This project contains multiple useful mathematical functions, implemented throug
   - `P3_3_DSPT/`
     - `discreteCosine.hs` 
 - `documents/`
+    - `cosineTest.hs` 
+    - `expTest.hs` 
+    - `naturalLogarithmTest.hs`
+    - `DCTTest.hs`
 - `Video/` 
     - `VideoLink.txt`
+- `README.md` 
 
 ## Program Functionalities
 
