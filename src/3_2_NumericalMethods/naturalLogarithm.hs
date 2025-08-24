@@ -22,10 +22,10 @@ Input:
 Output:	Float
 	The product of B multiplied by itself E times.
 
-Notes
+Notes:
 	- E = 0, always returns 1 (x^0 = 1).
 	- E = 1, always returns the base itself.
-    - To avoid using the built-in exponentiation function (^), we needed to implement recursively:
+    - To avoid using the build-in exponentiation function (^), we needed to implement recursively:
         B^E = B * B^(E - 1)
 -}
 exponential :: Float -> Int -> Float
@@ -72,7 +72,7 @@ naturalLog x n
 
 
 
---  JUST TESTING TEMPORARY
+--  TESTING TEMPORARY
 compareFunction :: Float -> Int -> IO()
 compareFunction x y = do
     putStrLn (show (x / 10) ++ "\n\tIntegrated:\t\t\t" ++ show (log (1+(x / 10))))

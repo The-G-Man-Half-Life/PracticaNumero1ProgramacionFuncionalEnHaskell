@@ -1,6 +1,6 @@
 {-
-For some reason the results loses precision when |X| is significantly larger than Pi.
-For said reason we must reduce the ressould to a range between -Pi & Pi.
+Taylor series, loses precision when |X| is significantly larger than Pi.
+We must reduce the result to a range between -Pi & Pi.
 
 Input:	Float
 	Any number X.
@@ -29,7 +29,7 @@ Output:	Float
 Notes:
 	- E = 0, always returns 1 (X^0 = 1).
 	- E = 1, always returns the base itself.
-    - To avoid using the built-in exponentiation function (^), we needed to implement recursively:
+    - To avoid using the build-in exponentiation function (^), we needed to implement recursively:
         B^E = B * B^(E - 1)
 -}
 exponential :: Float -> Int -> Float
@@ -40,15 +40,15 @@ exponential x y = x * exponential x (y - 1)
 
 
 {-
-Factorialization of an Integer.
+Factorial of an Integer.
 
-Input:	Integer X (please no too large)
+Input:	Integer X (please, not too large)
 
 Output:	Factorial of X
 
 Notes:
     - By definition: 0! is equal to 1
-	- In order to use factorial in Haskell without exporting external Libraries we must recursively built the function:
+	- In order to use factorial in Haskell without exporting external Libraries we must recursively build the function:
         X! = X * (X - 1)!
 -}
 factorial :: Int -> Integer
@@ -92,12 +92,12 @@ cosine x y = cosineSum (reduceToPi x) y 0
 
 
 
---  TESTING
 
+--  TESTING
 compareFunction :: Float -> Int -> IO()
 compareFunction x y = do
     putStrLn (show x ++ "\n\tIntegrated:\t\t\t" ++ show (cos x))
-    putStrLn ("\tSumatory (" ++ show y ++ " precision):\t" ++ show (cosine x y) ++ "\n")
+    putStrLn ("\tApproximation (" ++ show y ++ " precision):\t" ++ show (cosine x y) ++ "\n")
 
 testing :: Int -> Float -> IO()
 testing value iteration = do
