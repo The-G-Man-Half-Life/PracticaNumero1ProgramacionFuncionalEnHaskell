@@ -153,7 +153,7 @@ main = do
     print (obtainDCT [1,2,3,4])           
     -- expected: [~5.0, ~-2.230, ~0.0, ~-0.158]
 
-    print "Case 6: symmetric signal"
+    print "Case 6: symmetric values"
     print (obtainDCT [1,2,3,2,1])         
     -- expected: [~4.025, ~0.0, ~-1.656, ~-1.656, ~0.0, ~0.246]
 
