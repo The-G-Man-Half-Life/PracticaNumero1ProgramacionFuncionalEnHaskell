@@ -87,21 +87,6 @@ This project contains multiple useful mathematical functions, implemented throug
 - **naturalLogarithm.hs**  
    - Organizing properly the functions.
 
-- **General problems throught the development**
-   - Installing all the required components to
-     make Haskell compile properly since we
-     were using VSC to write and test everything.
-   - The high difficulty involved in understanding
-     Haskell to develop all the programs since our
-     team has not had to deal with functional
-     programming ever.
-   - Coordinating all the proccess through Github.
-     Since we divided the work between all members
-     coordinating how to use the tool appropiately
-     to evite fatal mistakes was really important.
-   - Time organization and video preparation.
-   - Maintaining a clean code throught the entire
-     development proccess
 ### 3) P3_3_DSPT
 - **discreteCosine.hs**  
     - Problems related on understanding the needed
@@ -117,7 +102,23 @@ This project contains multiple useful mathematical functions, implemented throug
     - How to organize properly the flow of the functions
       to make everything work properly having in mind the
       many functionalities present in the program.
-  
+      
+### General problems throught the development
+   - Installing all the required components to
+     make Haskell compile properly since we
+     were using VSC to write and test everything.
+   - The high difficulty involved in understanding
+     Haskell to develop all the programs since our
+     team has not had to deal with functional
+     programming ever.
+   - Coordinating all the proccess through Github.
+     Since we divided the work between all members
+     coordinating how to use the tool appropiately
+     to evite fatal mistakes was really important.
+   - Time organization and video preparation.
+   - Maintaining a clean code throught the entire
+     development proccess
+     
 ## Prerequisites
 
 - GHC (Haskell Compiler)
