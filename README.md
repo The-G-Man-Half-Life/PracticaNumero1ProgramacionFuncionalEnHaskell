@@ -1,4 +1,4 @@
-# Practica Número 1 - Programaión Funcional en Haskell
+# Practica Número 1 - Programación Funcional en Haskell
 
 This project contains several mathematical and usefull functions make with the basic operations in Haskell without libraries were imported, this is part of a curse of practical programming with pure educational porpuses.
 
