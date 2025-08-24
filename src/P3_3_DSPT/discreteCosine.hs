@@ -42,20 +42,6 @@ obtainSqrt num
          else useNewtonMethod target y2
 
 ------------------------------------------------------------------------------
--- accessToAnElementInAList
--- What does it do?: It returns the number in a list given its position
--- Inputs: 
--- -Any list of doubles
--- -An integer representing the position of the element to extract
--- Output: 
--- -The double located at the given index in the list
-------------------------------------------------------------------------------
-accessToAnElementInAList :: [Double] -> Int -> Double
-accessToAnElementInAList (x:_) 0 = x
-accessToAnElementInAList (_:xs) i
-  = accessToAnElementInAList xs (i-1)
-
-------------------------------------------------------------------------------
 -- determineFactorA
 -- What does it do?: It determines the correct factor A to use 
 -- based on the index coefficient and signal length
@@ -97,7 +83,7 @@ sumOfCosProduct indexCoefficient (x:xs) lengthAsDouble recursionIdx accumulation
 -- What does it do?: It calculates the coefficient K
 -- Inputs:
 -- -An int representing the coefficient index k
--- -A list of doubles representing the signal
+-- -A list of doubles representing the list
 -- Output:
 -- -A double corresponding to the coefficient K
 ------------------------------------------------------------------------------
@@ -114,7 +100,7 @@ obtainCoefficientK k xs =
 -- What does it do?: It recalls to its aux function that takes care of making
 -- the DCT and then receives the list with the DCT
 -- Inputs:
--- -A list of doubles representing the signal
+-- -A list of doubles representing the list
 -- Output:
 -- -A list of doubles representing the DCT coefficients
 ------------------------------------------------------------------------------
@@ -131,7 +117,7 @@ obtainDCT xs =
 -- Inputs:
 -- -An int representing the current factor K (index)
 -- -An int representing the total length of the list
--- -A list of doubles representing the signal
+-- -A list of doubles representing the list
 -- Output:
 -- -A list of doubles containing all the DCT coefficients
 ------------------------------------------------------------------------------
@@ -173,4 +159,4 @@ main = do
 
     print "Case 7: alternating values"
     print (obtainDCT [1,-1,1,-1])         
-    -- expected: [~0.0, ~0.765, ~-0.0, 1,848
+    -- expected: [~0.0, ~0.765, ~-0.0, 1,848]
