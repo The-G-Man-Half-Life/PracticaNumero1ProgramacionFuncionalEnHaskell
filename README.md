@@ -163,6 +163,8 @@ In PowerShell
 
 In PowerShell:
 
+Hecho por: Mateo Montoya Ospina y Juan Pablo Lopez Lidueña
+
 ```bash
 # 1) Clone and enter the repo
 gh repo clone The-G-Man-Half-Life/PracticaNumero1ProgramacionFuncionalEnHaskell
