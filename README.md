@@ -56,27 +56,28 @@ This project contains multiple useful mathematical functions, implemented throug
     one.
   - Deciding wether or not should be used a
     comprehensive list over a basic function
-    to make the program
+    to make the program.
   
 - **sortArray.hs**  
    - Finding a proper way to make the cycle
-     as this was the first program to be made
+     as this was the first program to be made.
    - Understanding how to organize the flow
      of the multiple functions as this program
      required multiple verifications throught
-     the execution of the program
+     the execution of the program.
    - Recognizing how to swap the multiple
-     elements in a proper way
+     elements in a proper way.
 
 ### 2) P3_2_NumericalMethods
 - **cosineFunction.hs**  
    - Handling how fast were the numbers increasing
      due to the cosine inside the program because
      these values could return infinite or crash
-     the device
+     the device.
    - Organizing the functions to make the main
-     function execute properly
-   - Making that the tests run properly
+     function execute properly.
+   - Making that the tests run properly.
+     
 - **exponentialFunction.hs**  
    - Problems related to how to divide properly
      the multiple functions involucrated in the
@@ -109,6 +110,7 @@ This project contains multiple useful mathematical functions, implemented throug
       many functionalities present in the program.
       
 ### General problems throught the development
+
    - Installing all the required components to
      make Haskell compile properly since we
      were using VSC to write and test everything.
@@ -124,6 +126,29 @@ This project contains multiple useful mathematical functions, implemented throug
    - Maintaining a clean code throught the entire
      development proccess
      
+## Conclusions
+
+  - The development of this project taught us the im-
+    portance of learning and adapting to new languages
+    to sort all kind of problems and difficulties.
+  - It is really important to understand how to sepa
+    rate properly all the functionalities in your pro-
+    gram to maintain the order and cohesion and evite
+    problems.
+  - It is necessary to understand the use of tools
+    such as Github and VSC to develop and test your 
+    code properly.
+  - The teamwork was really important in this project
+    as We helped each other and learned tons of things
+    of each other.
+
+## Notes
+  - To make more emphasis on the development and expla-
+    nation of the code we decided to focus the video
+    only on that and move the tests to the document
+    section in the repository and the mistakes and
+    problems appear in this read me.
+
 ## Prerequisites to execute this repository
 
 - GHC (Haskell Compiler)
