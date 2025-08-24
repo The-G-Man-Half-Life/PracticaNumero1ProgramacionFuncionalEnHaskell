@@ -119,7 +119,7 @@ This project contains multiple useful mathematical functions, implemented throug
    - Maintaining a clean code throught the entire
      development proccess
      
-## Prerequisites
+## Prerequisites to execute this repository
 
 - GHC (Haskell Compiler)
 - Optional "Cabal" for project management
@@ -127,9 +127,9 @@ This project contains multiple useful mathematical functions, implemented throug
 
 ## Where to Use
 
-In PowerShell:
+In PowerShell
 
-## How to Use:
+## How to Use
 
 In PowerShell:
 
